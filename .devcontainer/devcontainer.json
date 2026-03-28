@@ -1,0 +1,19 @@
+{
+  "name": "inventory-interview",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "postCreateCommand": "bash scripts/post-create.sh",
+  "forwardPorts": [8000, 54521, 54522],
+  "portsAttributes": {
+    "8000": { "label": "FastAPI" },
+    "54521": { "label": "Supabase API" },
+    "54522": { "label": "Postgres" }
+  }
+}

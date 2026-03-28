@@ -1,0 +1,7 @@
+CREATE TABLE inventory (
+    id        BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sku       TEXT UNIQUE NOT NULL,
+    quantity  INTEGER NOT NULL DEFAULT 0,
+    warehouse TEXT NOT NULL DEFAULT 'us-west-2',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
