@@ -1,9 +1,37 @@
 # Inventory service
 
-**Objective:** With local Supabase running and the API server up, `uv run python harness.py` must exit successfully.
+*The following is a fictional narrative about some very real problems.*
 
----
+## Context
 
-**1. Environment** — Docker (for Supabase) and a way to run the Supabase CLI (`npx supabase` is enough). On **GitHub Codespaces**, open the repo with the **devcontainer** so Docker-in-Docker is available; `scripts/post-create.sh` installs `uv` and runs `uv sync`. On a **Mac**, install Docker Desktop yourself; no script can do that for you.
+Your API server has been running fine all morning. Health checks are green. No
+deploys have gone out. No code has changed.
 
-**2. Server** — Optimize `server.py` so the harness passes. Run the app with `uv sync` and `uv run uvicorn server:app --port 8000`, then `uv run python harness.py` to verify.
+Then traffic spikes.
+
+Suddenly, the server starts failing the harness. `GET /health` gets slow.
+Requests pile up. The process is still alive, but under load it stops behaving
+like a healthy service.
+
+Your job is to figure out why this only breaks at higher traffic, and fix it.
+
+## Objective
+
+Make `uv run python harness.py` exit successfully.
+
+## Stage 1: environment
+
+Get the local database running for this repo.
+
+- Make Docker available in the environment.
+- Make the Supabase CLI available in the environment.
+- Start the local Supabase stack for this repository.
+- Create `.env` from `.env.example`.
+- Fill in `SUPABASE_URL` and `SUPABASE_KEY` with working local values.
+- Install the project dependencies.
+
+## Stage 2: server
+
+Run the API server and the harness for this repository.
+
+Your task is to change `server.py` until the harness exits successfully.
